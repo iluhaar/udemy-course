@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import ExpenseItem from "./components/ExpenseItem/ExpenseItem";
+import NewExpense from "./components/NewExpense/NewExpense";
+import "./App.css";
 
-function App() {
+function App({ mockDataExpense }) {
+  const [expenses, setExpenses] = useState();
+  const [showForm, setShowForm] = useState(false);
+  useEffect(() => {
+    setExpenses(mockDataExpense);
+  }, [mockDataExpense]);
+
+  const addNewExpense = (expenseType, ammount, date) => {
+    setExpenses((prev) => [...prev, { expenseType, ammount, date }]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="expense_items__wrapper">
+        {expenses &&
+          expenses.map((data, index) => {
+            return <ExpenseItem key={index} {...data} />;
+          })}
+      </div>
+      <button onClick={() => setShowForm(!showForm)}>{!showForm ? "Add new Expense" : "Close"}</button>
+      {showForm && <NewExpense addNewExpense={addNewExpense} />}
     </div>
   );
 }
