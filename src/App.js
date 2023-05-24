@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import ExpenseItem from "./components/ExpenseItem/ExpenseItem";
-import NewExpense from "./components/NewExpense/NewExpense";
+import NewExpense from "./components/Expense/NewExpense/NewExpense";
 import "./App.css";
-import SearchBar from "./components/SearchBar/SearchBar";
+import FiltersComponentWrapper from "./components/Filters/FiltersComponentWrapper";
+import ExpensesWrapper from "./components/Expense/ExpensesWrapper";
 
 function App({ mockDataExpense }) {
   const [expenses, setExpenses] = useState();
-  // const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   useEffect(() => {
     setExpenses(mockDataExpense);
   }, [mockDataExpense]);
@@ -16,12 +16,10 @@ function App({ mockDataExpense }) {
   };
 
   const handleSearch = (string) => {
-    console.info("🚀 ~ file: App.js:19 ~ handleSearch ~ string:", string);
     if (string !== "") {
-      const filteredExpenses = expenses.filter((expense) =>
+      const filteredExpenses = mockDataExpense.filter((expense) =>
         expense.expenseType.toLowerCase().includes(string.toLowerCase())
       );
-      console.info("🚀 ~ file: App.js:22 ~ handleSearch ~ filteredExpenses:", filteredExpenses);
 
       setExpenses(filteredExpenses);
     } else {
@@ -29,17 +27,36 @@ function App({ mockDataExpense }) {
     }
   };
 
+  const handleYearFilter = (year) => {
+    const filteredExpenses = mockDataExpense?.filter((expense) => {
+      return expense.date?.toLocaleString("en-US", { year: "numeric" }) === year;
+    });
+
+    setExpenses(filteredExpenses);
+  };
+
+  const handlerClearFilters = () => {
+    setExpenses(mockDataExpense);
+  };
+
+  const dates = expenses?.map((i) => i?.date);
+
   return (
     <div className="App">
-      {/* <button onClick={() => setShowForm(!showForm)}>{!showForm ? "Add new Expense" : "Close"}</button> */}
-
       <div className="expense_items__wrapper">
-        <NewExpense addNewExpense={addNewExpense} />
-        <SearchBar handleSearch={handleSearch} />
-        {expenses &&
-          expenses.map((data, index) => {
-            return <ExpenseItem key={index} {...data} />;
-          })}
+        <FiltersComponentWrapper
+          handleSearch={handleSearch}
+          dates={dates}
+          handleYearFilter={handleYearFilter}
+          handlerClearFilters={handlerClearFilters}
+        />
+        <ExpensesWrapper expenses={expenses} />
+        <div className="add_expense-button__wrapper">
+          <button className="add_expense-button" onClick={() => setShowForm(!showForm)}>
+            {!showForm ? "Add new Expense" : "Close"}
+          </button>
+        </div>
+        {showForm && <NewExpense addNewExpense={addNewExpense} />}
       </div>
     </div>
   );

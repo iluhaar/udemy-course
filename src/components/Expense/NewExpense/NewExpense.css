@@ -1,0 +1,50 @@
+.new-expense__wrapper {
+  background-color: #f3f3f3;
+  margin: 1rem 0 1rem 0;
+  animation: appear 0.3s ease-in-out;
+}
+
+.new-expense__form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.new-expense-type-ammount {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.expense-item-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #f3f3f3;
+  background-color: #1a1a1a;
+  min-height: 5rem;
+  min-width: 12rem;
+}
+
+.new-expense__form label {
+  text-align: left;
+}
+
+.new-expense__form label::after {
+  content: "\a";
+  white-space: pre;
+}
+
+@keyframes appear {
+  from {
+    transform: translateX(6px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

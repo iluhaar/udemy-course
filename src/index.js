@@ -10,12 +10,12 @@ const mockDataExpense = [
     ammount: 294.67,
   },
   {
-    date: new Date("2023", "05", "19"),
+    date: new Date("2012", "05", "23"),
     expenseType: "Life Insurance",
     ammount: 30000.67,
   },
   {
-    date: new Date("2023", "05", "19"),
+    date: new Date("2020", "05", "19"),
     expenseType: "Plane Insurance",
     ammount: 100294.67,
   },
