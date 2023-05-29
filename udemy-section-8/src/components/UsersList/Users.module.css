@@ -1,0 +1,33 @@
+.users__wrapper {
+  background-color: #f3f3f3;
+  color: #1a1a1a;
+  padding: 1rem;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(243, 243, 243, 1);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(243, 243, 243, 1);
+  box-shadow: 10px 10px 5px 0px rgba(243, 243, 243, 1);
+  animation: appear 0.3s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: auto;
+  max-width: 50%;
+}
+
+.card__wrapper {
+  border: 2px dashed lightblue;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: auto;
+  flex: 1 1 160px;
+}
+
+@keyframes appear {
+  from {
+    transform: translateX(6px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

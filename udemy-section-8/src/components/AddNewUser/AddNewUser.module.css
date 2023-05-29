@@ -1,0 +1,32 @@
+.form__wrapper {
+  background-color: #f3f3f3;
+  color: #1a1a1a;
+  padding: 1rem;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(243, 243, 243, 1);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(243, 243, 243, 1);
+  box-shadow: 10px 10px 5px 0px rgba(243, 243, 243, 1);
+}
+
+.form__wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form_controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0 1rem;
+}
+
+.form_controls input {
+  width: 30vw;
+  background-color: #f3f3f3;
+  color: #333;
+}
+
+.add_new_user__button {
+  width: 10vw;
+}
