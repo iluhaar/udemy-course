@@ -20,6 +20,9 @@ const YearFilter = ({ dates, handleYearFilter }) => {
                 setSelectedYear(e.target.value);
               }}
             >
+              <option value="default" selected disabled>
+                Choose year
+              </option>
               {years.map((year, index) => (
                 <option key={index} value={year}>
                   {" "}

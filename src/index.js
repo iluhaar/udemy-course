@@ -5,19 +5,19 @@ import App from "./App";
 
 const mockDataExpense = [
   {
-    date: new Date("2023", "05", "19"),
+    date: new Date("2020", "0", "19"),
     expenseType: "Car Insurance",
-    ammount: 294.67,
+    amount: 29400,
   },
   {
-    date: new Date("2012", "05", "23"),
+    date: new Date("2023", "10", "23"),
     expenseType: "Life Insurance",
-    ammount: 30000.67,
+    amount: 30000,
   },
   {
-    date: new Date("2020", "05", "19"),
+    date: new Date("2021", "05", "19"),
     expenseType: "Plane Insurance",
-    ammount: 100294.67,
+    amount: 100295,
   },
 ];
 

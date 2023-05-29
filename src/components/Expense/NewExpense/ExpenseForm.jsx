@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import "./NewExpense.css";
 
-const ExpenseForm = ({ addNewExpense }) => {
+const ExpenseForm = ({ addNewExpense, showButton }) => {
   const [expenseType, setExpenseType] = useState("");
-  const [ammount, setAmmount] = useState(null);
+  const [amount, setAmount] = useState(null);
   const [date, setDate] = useState(null);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    addNewExpense(expenseType, ammount, new Date(date));
+    addNewExpense(expenseType, +amount, new Date(date));
 
     setExpenseType("");
     setDate("");
-    setAmmount(0);
+    setAmount(0);
   };
 
   return (
     <form onSubmit={(e) => onSubmitHandler(e)} className="new-expense__form">
-      <div className="new-expense-type-ammount">
+      <div className="new-expense-type-amount">
         <div className="expense-item-card">
           <label>Expense Type:</label>
           <input
@@ -30,14 +30,14 @@ const ExpenseForm = ({ addNewExpense }) => {
           />
         </div>
         <div className="expense-item-card">
-          <label>Ammount:</label>
+          <label>amount:</label>
           <input
             type="number"
             min="0.01"
             step="0.01"
-            id="ammount"
-            value={ammount}
-            onChange={(e) => setAmmount(e.target.value)}
+            id="amount"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
             placeholder="Expense type.."
             required
           />
@@ -56,8 +56,9 @@ const ExpenseForm = ({ addNewExpense }) => {
       </div>
       <>
         <button className="expense-item-add" type="submit">
-          Add
+          Add new expense
         </button>
+        <button onClick={() => showButton(false)}>Close</button>
       </>
     </form>
   );

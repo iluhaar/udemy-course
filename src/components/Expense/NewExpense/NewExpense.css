@@ -12,7 +12,7 @@
   gap: 1rem;
 }
 
-.new-expense-type-ammount {
+.new-expense-type-amount {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
