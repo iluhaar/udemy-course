@@ -1,23 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import NewExpense from "./components/Expense/NewExpense/NewExpense";
 import "./App.css";
 import FiltersComponentWrapper from "./components/Filters/FiltersComponentWrapper";
 import ExpensesWrapper from "./components/Expense/ExpensesWrapper";
 
 function App({ mockDataExpense }) {
-  const [expenses, setExpenses] = useState();
+  const [expenses, setExpenses] = useState(mockDataExpense);
   const [showForm, setShowForm] = useState(false);
-  useEffect(() => {
-    setExpenses(mockDataExpense);
-  }, [mockDataExpense]);
 
-  const addNewExpense = (expenseType, ammount, date) => {
-    setExpenses((prev) => [...prev, { expenseType, ammount, date }]);
+  const addNewExpense = (expenseType, amount, date) => {
+    setExpenses((prev) => [...prev, { expenseType, amount, date }]);
   };
 
   const handleSearch = (string) => {
     if (string !== "") {
-      const filteredExpenses = mockDataExpense.filter((expense) =>
+      const filteredExpenses = expenses.filter((expense) =>
         expense.expenseType.toLowerCase().includes(string.toLowerCase())
       );
 
@@ -39,7 +36,7 @@ function App({ mockDataExpense }) {
     setExpenses(mockDataExpense);
   };
 
-  const dates = expenses?.map((i) => i?.date);
+  const dates = mockDataExpense?.map((i) => i?.date);
 
   return (
     <div className="App">
@@ -52,11 +49,13 @@ function App({ mockDataExpense }) {
         />
         <ExpensesWrapper expenses={expenses} />
         <div className="add_expense-button__wrapper">
-          <button className="add_expense-button" onClick={() => setShowForm(!showForm)}>
-            {!showForm ? "Add new Expense" : "Close"}
-          </button>
+          {!showForm && (
+            <button className="add_expense-button" onClick={() => setShowForm(true)}>
+              Add new Expense
+            </button>
+          )}
         </div>
-        {showForm && <NewExpense addNewExpense={addNewExpense} />}
+        {showForm && <NewExpense addNewExpense={addNewExpense} showButton={setShowForm} />}
       </div>
     </div>
   );
