@@ -5,6 +5,7 @@
   -webkit-box-shadow: 10px 10px 5px 0px rgba(243, 243, 243, 1);
   -moz-box-shadow: 10px 10px 5px 0px rgba(243, 243, 243, 1);
   box-shadow: 10px 10px 5px 0px rgba(243, 243, 243, 1);
+  width: 50vw;
 }
 
 .form__wrapper form {

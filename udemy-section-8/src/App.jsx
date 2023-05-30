@@ -10,11 +10,20 @@ function App() {
     setUsers((prev) => [...prev, user]);
   };
 
+  const removeUser = (id) => {
+    console.info("🚀 ~ file: App.jsx:15 ~ removeUser ~ id:", id);
+    setUsers((prev) => {
+      console.info("🚀 ~ file: App.jsx:16 ~ setUsers ~ prev:", prev);
+      const updatedUsers = prev.filter((user) => user.id !== id);
+      return updatedUsers;
+    });
+  };
+
   return (
     <>
       <AddNewUserForm AddNewUser={AddNewUser} />
       <br />
-      <UsersList users={users} />{" "}
+      <UsersList users={users} removeUser={removeUser} />{" "}
     </>
   );
 }

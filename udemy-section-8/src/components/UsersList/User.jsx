@@ -5,8 +5,9 @@ import styles from "./Users.module.css";
 export const User = ({ userName, age }) => {
   return (
     <div className={styles.user}>
-      <p>{userName}</p>
-      <p>{age}</p>
+      <p>
+        {userName} ({age} years old)
+      </p>
     </div>
   );
 };
