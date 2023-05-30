@@ -3,7 +3,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 import styles from "./AddNewUser.module.css";
-import { Modal } from "../Modal/Modal";
+import ModalWrapper from "../Modal/Modal";
 
 export const AddNewUserForm = ({ AddNewUser }) => {
   const [userName, setUserName] = useState("");
@@ -31,9 +31,9 @@ export const AddNewUserForm = ({ AddNewUser }) => {
   return (
     <div className={styles.form__wrapper}>
       {isOpen && (
-        <Modal setIsOpen={setIsOpen}>
+        <ModalWrapper setIsOpen={setIsOpen}>
           <div>All fields are required</div>
-        </Modal>
+        </ModalWrapper>
       )}
       <form onSubmit={onSubmitHandler}>
         <div className={styles.form_controls}>

@@ -11,9 +11,7 @@ function App() {
   };
 
   const removeUser = (id) => {
-    console.info("🚀 ~ file: App.jsx:15 ~ removeUser ~ id:", id);
     setUsers((prev) => {
-      console.info("🚀 ~ file: App.jsx:16 ~ setUsers ~ prev:", prev);
       const updatedUsers = prev.filter((user) => user.id !== id);
       return updatedUsers;
     });
