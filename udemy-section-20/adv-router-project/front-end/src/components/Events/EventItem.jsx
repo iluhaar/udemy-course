@@ -6,10 +6,12 @@ function EventItem({ event }) {
     // ...
   }
 
+  const linkTo = `/events/${event.id}`;
+
   return (
     <article className={classes.event}>
       <img src={`${event.image}?text=${event.title}`} alt={event.title} />
-      <Link to={`/events/${event.id}`}>
+      <Link to={linkTo}>
         <h1>{event.title}</h1>
       </Link>
       <time>{event.date}</time>

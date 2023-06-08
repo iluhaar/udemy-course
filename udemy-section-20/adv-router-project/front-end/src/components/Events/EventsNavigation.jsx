@@ -17,7 +17,6 @@ function EventsNavigation() {
               <NavLink
                 to="/events/new"
                 className={({ isActive }) => {
-                  console.info("🚀 ~ file: EventsNavigation.jsx:18 ~ EventsNavigation ~ { isActive }:", { isActive });
                   return isActive ? classes.active : undefined;
                 }}
               >
