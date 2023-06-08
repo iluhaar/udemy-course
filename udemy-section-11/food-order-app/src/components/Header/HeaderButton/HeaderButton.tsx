@@ -10,6 +10,7 @@ const HeaderButton = () => {
           <CartIcon />
         </span>
         Your Cart
+        <span className={styles.badge}>1</span>
       </button>
     </>
   );
